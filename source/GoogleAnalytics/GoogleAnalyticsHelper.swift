@@ -12,9 +12,9 @@ typealias GAHelper = GoogleAnalyticsHelper
 
 class GoogleAnalyticsHelper {
   
-  static let GAID = "UA-76794534-2"
+  static let GAID = "UA-76794534-4"
   static let GAName = "Demo"
-  static let PingURL = "http://ex.toolinbox.net/ga/gapp.html?id=\(GAID)&name=\(GAName)&version=\(GoogleAnalyticsHelper.getAppVersion())"
+  static let PingURL = "http://atjason.com/MacGoogleAnalytics/gapp.html?id=\(GAID)&name=\(GAName)&version=\(GoogleAnalyticsHelper.getAppVersion())"
   static let PingTimeInterval: NSTimeInterval = 3600 * 6 // Ping every 6h
   
   // MARK: - Helper
