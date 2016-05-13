@@ -28,6 +28,7 @@ class GoogleAnalytics: NSObject {
   var no = "no"
   var none = "none"
   
+  private let userUUIDKey = "User UUID"
   private let paramCategory = "ca"
   private let paramEvent = "ev"
   private let paramLabel = "la"
@@ -56,7 +57,7 @@ class GoogleAnalytics: NSObject {
   }
   
   func doPing() {
-    GA.sendEvent("app", event: "ping", label: Utilities.getAppVersion())
+    GA.sendEvent("app", event: "ping", label: GAHelper.getAppVersion())
   }
   
   func doPingURL(url: String) {
@@ -110,23 +111,23 @@ class GoogleAnalytics: NSObject {
     self.performSelector(#selector(GoogleAnalytics.doPingURL(_:)), withObject: url)
   }
   
-  func initUUIDIfNeeded(uuidKey: String) {
+  func initUUIDIfNeeded() {
     let userDefaults = NSUserDefaults.standardUserDefaults()
     
-    let userUUID = userDefaults.valueForKey(uuidKey) as? String
+    let userUUID = userDefaults.valueForKey(userUUIDKey) as? String
     
     if userUUID == nil {
       let uuid = NSUUID().UUIDString
-      userDefaults.setValue(uuid, forKey: uuidKey)
+      userDefaults.setValue(uuid, forKey: userUUIDKey)
       
       let locale = NSLocale.currentLocale()
       
       // Version
-      let version = Utilities.getAppVersion()
+      let version = GAHelper.getAppVersion()
       GA.sendEvent("init", event: "version", label: version)
       
       // OS
-      let os = Utilities.getOSXVersion()
+      let os = GAHelper.getOSXVersion()
       GA.sendEvent("init", event: "os", label: os)
       
       // Language
