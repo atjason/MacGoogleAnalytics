@@ -6,8 +6,7 @@
 //  Copyright © 2015 Jason Zheng. All rights reserved.
 //
 
-import WebKit
-import Cocoa
+import Foundation
 
 typealias GAHelper = GoogleAnalyticsHelper
 

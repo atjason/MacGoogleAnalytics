@@ -6,28 +6,25 @@
 //  Copyright © 2015 Jason Zheng. All rights reserved.
 //
 
-import WebKit
 import Cocoa
+import WebKit
 
 let GA = GoogleAnalytics.sharedInstance
 
 class GoogleAnalytics: NSObject {
   
   static let sharedInstance = GoogleAnalytics()
-  
   private override init() { super.init() }
-  
-  private var pingURL = ""
   
   private var webViews = Set<WebView>()
   private let timeIntervalDelayToRemoveWebView = NSTimeInterval(60)
-  
   private weak var timer: NSTimer?
   
   var yes = "yes"
   var no = "no"
   var none = "none"
   
+  private var pingURL = ""
   private let userUUIDKey = "User UUID"
   private let paramCategory = "ca"
   private let paramEvent = "ev"
@@ -39,10 +36,10 @@ class GoogleAnalytics: NSObject {
   
   func startPing(timeInternal: NSTimeInterval) {
     if timer == nil {
-      timer = NSTimer.scheduledTimerWithTimeInterval(timeInternal,
-                                                     target: self, selector: #selector(GoogleAnalytics.doPing),
-                                                     userInfo: nil, repeats: true)
-      timer?.tolerance = timeInternal * 0.01
+      timer = NSTimer.scheduledTimerWithTimeInterval(
+        timeInternal, target: self, selector: #selector(GoogleAnalytics.doPing),
+        userInfo: nil, repeats: true)
+      timer?.tolerance = timeInternal * 0.1
     }
     
     timer?.fire()
@@ -50,10 +47,6 @@ class GoogleAnalytics: NSObject {
   
   func stopPing() {
     timer?.invalidate()
-  }
-  
-  func pingOnce() {
-    self.performSelector(#selector(GoogleAnalytics.doPing), withObject: self)
   }
   
   func doPing() {
@@ -75,8 +68,6 @@ class GoogleAnalytics: NSObject {
           let request = NSURLRequest(URL: requestURL)
           newWebView.mainFrame.loadRequest(request)
         })
-        
-        //NSLog(url)
         
       } else {
         NSLog("Failed to generate NSURL from \(url)")
@@ -117,46 +108,18 @@ class GoogleAnalytics: NSObject {
     let userUUID = userDefaults.valueForKey(userUUIDKey) as? String
     
     if userUUID == nil {
-      let uuid = NSUUID().UUIDString
-      userDefaults.setValue(uuid, forKey: userUUIDKey)
+      userDefaults.setValue(NSUUID().UUIDString, forKey: userUUIDKey)
       
-      let locale = NSLocale.currentLocale()
-      
-      // Version
-      let version = GAHelper.getAppVersion()
-      GA.sendEvent("init", event: "version", label: version)
-      
-      // OS
+      let locale = NSLocale.currentLocale().objectForKey(NSLocaleIdentifier) as? String ?? ""
       let os = GAHelper.getOSXVersion()
-      GA.sendEvent("init", event: "os", label: os)
-      
-      // Language
-      let language = NSLocale.preferredLanguages().count > 0 ? NSLocale.preferredLanguages()[0] : ""
-      GA.sendEvent("init", event: "language", label: language)
-      
-      // Country
-      let country = locale.objectForKey(NSLocaleCountryCode) as? String ?? ""
-      GA.sendEvent("init", event: "country", label: country)
-      
-      // All
-      let formatter = NSDateFormatter()
-      formatter.dateFormat = "yyyy-MM-dd_HH:mm"
-      let timeZone = NSTimeZone.localTimeZone().localizedName(NSTimeZoneNameStyle.ShortStandard, locale: nil) ?? ""
-      let dateString = formatter.stringFromDate(NSDate()) + "_" + timeZone
-      
-      let localeIdentifier = locale.objectForKey(NSLocaleIdentifier) as? String ?? ""
-      let all = "\(localeIdentifier)_\(os)_\(dateString)_\(version)"
-      GA.sendEvent("init", event: "all", label: all)
+      let version = GAHelper.getAppVersion()
+      let info = "\(locale)_\(os)_\(version)"
+      GA.sendEvent("app", event: "init", label: info)
     }
   }
 }
 
 extension GoogleAnalytics: WebFrameLoadDelegate {
-  
-  func removeUnusedWebView(webView: WebView) {
-    webView.close()
-    self.webViews.remove(webView)
-  }
   
   func webView(sender: WebView!, didStartProvisionalLoadForFrame frame: WebFrame!) {
     // Should remove in method of "willPerformClientRedirectToURL"
@@ -168,9 +131,15 @@ extension GoogleAnalytics: WebFrameLoadDelegate {
     // Why use this delegate? As it needs time to run the Google Analytics script after the html file was downloaded.
     // But there's no method to get this time point. Thus add URL redirect in the html file.
     // And monitor this URL redirect to know the script has run.
+    
     // TODO: Improve this method. Remove the unneeded code in site.
     
     // Remove the reference of this WebView to release it
     removeUnusedWebView(sender)
+  }
+  
+  func removeUnusedWebView(webView: WebView) {
+    webView.close()
+    self.webViews.remove(webView)
   }
 }
