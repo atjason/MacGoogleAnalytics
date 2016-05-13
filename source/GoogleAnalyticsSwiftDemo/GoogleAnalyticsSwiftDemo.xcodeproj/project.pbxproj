@@ -13,6 +13,7 @@
 		96806FB71CE5BABD0012CF72 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96806FB51CE5BABD0012CF72 /* MainWindowController.swift */; };
 		96806FB81CE5BABD0012CF72 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96806FB61CE5BABD0012CF72 /* MainWindowController.xib */; };
 		96806FBB1CE5BB7D0012CF72 /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96806FBA1CE5BB7D0012CF72 /* GoogleAnalytics.swift */; };
+		96806FBD1CE5BE930012CF72 /* GoogleAnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96806FBC1CE5BE930012CF72 /* GoogleAnalyticsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		96806FB51CE5BABD0012CF72 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		96806FB61CE5BABD0012CF72 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		96806FBA1CE5BB7D0012CF72 /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleAnalytics.swift; path = ../../GoogleAnalytics/GoogleAnalytics.swift; sourceTree = "<group>"; };
+		96806FBC1CE5BE930012CF72 /* GoogleAnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleAnalyticsHelper.swift; path = ../../GoogleAnalytics/GoogleAnalyticsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				96806FBA1CE5BB7D0012CF72 /* GoogleAnalytics.swift */,
+				96806FBC1CE5BE930012CF72 /* GoogleAnalyticsHelper.swift */,
 			);
 			name = GoogleAnalytics;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				96806FB71CE5BABD0012CF72 /* MainWindowController.swift in Sources */,
 				96806FA91CE5BA930012CF72 /* AppDelegate.swift in Sources */,
 				96806FBB1CE5BB7D0012CF72 /* GoogleAnalytics.swift in Sources */,
+				96806FBD1CE5BE930012CF72 /* GoogleAnalyticsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
