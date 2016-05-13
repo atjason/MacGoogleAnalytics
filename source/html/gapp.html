@@ -1,0 +1,55 @@
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
+
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+  }
+
+  var query = getQueryParams(document.location.search);
+  var id = query.id;
+  var name = query.name;
+  var version = query.version;
+  var ca = query.ca;
+  var ev = query.ev;
+  var la = query.la;
+
+  ga('create', id, 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'screenview', {
+    'appName': name,
+    'appVersion': version,
+    'screenName': 'Home'
+  });
+
+  if (typeof ca != 'undefined' && ca !== '') {
+    var cmd='ga(\'send\', \'event\', \''+ca+'\'';
+
+    if (typeof ev != 'undefined' && ev !== '') {
+      cmd+=',\''+ev+'\'';
+
+      if (typeof la != 'undefined' && la !== '') {
+        cmd+=',\''+la+'\'';
+      }
+    }
+
+    cmd+=');';
+    eval(cmd);
+  }
+
+  setTimeout(function(){ window.location = "../"; }, 10000);
+</script>
+
+
