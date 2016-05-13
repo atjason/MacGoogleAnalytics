@@ -9,8 +9,17 @@
 import Cocoa
 
 class MainWindowController: NSWindowController {
+  
+  @IBOutlet weak var optionA: NSButton!
+  
   override var windowNibName: String? {
     return "MainWindowController"
+  }
+  
+  @IBAction func sendEvent(sender: NSButton!) {
+    let selected = (optionA.state == NSOnState)
+    let label = selected ? GA.yes : GA.no
+    GA.sendEvent("options", event: "option_a", label: label)
   }
 }
 
