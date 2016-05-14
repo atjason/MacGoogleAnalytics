@@ -123,6 +123,19 @@ Please keep in mind that this solution should be your last resort. You’d ideal
 # Demo Project Using Objective C
 TODO
 
+# View Data in Google Analytics Site
+After data are collected, you can view them in Google Analytics as normal: [https://analytics.google.com/analytics/web/](https://analytics.google.com/analytics/web/). During debug, you can also check whether it works or not in 'Real-Time'.
+
+Just give a tip for OS X version. In the demo app using swift, it collect event of `options > option_a > yes or no`. You may want to know, how many users enable this option in OS X 10.10 and how many for 10.11. How to do it?
+
+Open the `Behavior > Events > Top Events`, select `options > option_a`. Here you should be able to see all the events. Then add a new custom Segment, in `Technology > Operating System Version`, add *contains* '10.10', save it as 'OS X 10.10'. Add another Segment for 'OS X 10.11'.
+
+![1747211](http://p.appsites.io/2016-05-14-1747211.jpg)
+
+And then, apply the Segments, it could distinguish the data of OS X 10.10 or 10.11.
+
+![1750021](http://p.appsites.io/2016-05-14-1750021.jpg)
+
 # Release on Mac App Store
 Yes, this way could be released on Mac App Store. In fact, these of my apps have already released on Mac App Store.
 
