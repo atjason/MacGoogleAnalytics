@@ -34,6 +34,9 @@ Here are the supported parameter list.
 
 - `id`
   - The Google Analytics id, e.g., 'UA-12345678-1'.
+
+![1759091](http://p.appsites.io/2016-05-14-1759091.jpg)
+
 - `name`
   - The product name, e.g., 'ihosts' for [iHosts](http://ex.toolinbox.net/ga/url.html?utm_medium=ihosts&utm_source=GitHub&id=UA-26569268-10&url=https%3a%2f%2fitunes.apple.com%2fapp%2fid1102004240%3fls%3d1%26mt%3d12). You can track different products using same Google Analytics id, even I don't suggest you do that. 
 - `version`
