@@ -133,6 +133,8 @@ Yes, this way could be released on Mac App Store. In fact, these of my apps have
 ## Show Your Product
 If your product using MacGoogleAnalytics and you'd like to share it here, pull requests welcome :)
 
+# License
+MacGoogleAnalytics is licensed under the terms of the MIT license. Just feel free to use it :)
 
 # Donate
 If you think Mac Google Analytics is helpful for you, welcome to [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=quietjason%40gmail%2ecom&lc=US&item_name=Mac%20Google%20Analytics&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynow_SM%2egif%3aNonHosted) :)
