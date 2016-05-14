@@ -34,7 +34,8 @@ Here are the supported parameter list.
 
 - `id`
   - The Google Analytics id, e.g., 'UA-12345678-1'.
-
+  - **Note**: When you create a Google Analytics id, use the '**Mobile app**', but not 'Website'.
+  
 ![1759091](http://p.appsites.io/2016-05-14-1759091.jpg)
 
 - `name`
