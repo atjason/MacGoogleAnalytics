@@ -17,7 +17,7 @@ class GoogleAnalytics: NSObject {
   private override init() { super.init() }
   
   private var webViews = Set<WebView>()
-  private let timeIntervalDelayToRemoveWebView = NSTimeInterval(60)
+  private let timeIntervalDelayToRemoveWebView = NSTimeInterval(10)
   private weak var timer: NSTimer?
   
   var yes = "yes"
@@ -121,21 +121,10 @@ class GoogleAnalytics: NSObject {
 
 extension GoogleAnalytics: WebFrameLoadDelegate {
   
-  func webView(sender: WebView!, didStartProvisionalLoadForFrame frame: WebFrame!) {
-    // Should remove in method of "willPerformClientRedirectToURL"
-    // This is just to avoid memory leak if the way can't work.
-    self.performSelector(#selector(GoogleAnalytics.removeUnusedWebView(_:)), withObject: sender, afterDelay: timeIntervalDelayToRemoveWebView)
-  }
-  
-  func webView(sender: WebView!, willPerformClientRedirectToURL URL: NSURL!, delay seconds: NSTimeInterval, fireDate date: NSDate!, forFrame frame: WebFrame!) {
-    // Why use this delegate? As it needs time to run the Google Analytics script after the html file was downloaded.
-    // But there's no method to get this time point. Thus add URL redirect in the html file.
-    // And monitor this URL redirect to know the script has run.
-    
-    // TODO: Improve this method. Remove the unneeded code in site.
-    
-    // Remove the reference of this WebView to release it
-    removeUnusedWebView(sender)
+  func webView(sender: WebView!, didFinishLoadForFrame frame: WebFrame!) {
+    self.performSelector(#selector(GoogleAnalytics.removeUnusedWebView(_:)),
+                         withObject: sender,
+                         afterDelay: timeIntervalDelayToRemoveWebView)
   }
   
   func removeUnusedWebView(webView: WebView) {
