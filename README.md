@@ -1,5 +1,3 @@
-Google Analytics for macOS using Swift
-
 # Introduction
 As we all know, Google Analytics is a perfect solution for user-data analytics. Unfortunately, there's no official SDK for macOS. Furthermore, with the recent deprecation of <a href="https://fabric.io/">Fabric.io</a>'s Crashlytics for Mac – alongside the forced migration to <a href="https://firebase.google.com/">Firebase</a> – Google has decided to drop macOS support from Fabric's acquisition altogether.
 
@@ -10,17 +8,16 @@ Still yet, there are several ways of using Google Analytics with macOS projects.
 Overall, there are 2 parts of the project that work together to use Google Analytics.
 
 - HTML File
-  - This is the real place to send data to Google Analytics server. It uses Google Analytics's standard JavaScript API.
   - Located on a public server, this file uses Google Analytics' standard JavaScript API to send events received from the macOS app to your Google Analytics view.
 
 - macOS Project
   - The macOS side of this project loads the HTML file previously mentioned and then uses it to send data (such as events, device info, date, etc.) through the JavaScript API.
 
 # HTML File
-You can find the html file in `html > gapp.html`.
+You can find the HTML file in `html > gapp.html`.
 
-## Parameters of HTML File
-The parameters of the HTML file is exactly the same as with the normal HTML file.
+## Parameters of the HTML File
+The parameters of the HTML file are the exact same as with the normal Google Analytics HTML file.
 
 ```html
 /gapp.html?param1=paramValue1&param2=paramValue2&...
@@ -56,7 +53,7 @@ Here is a list of the supported parameters:
 **Note**: The full URL's parameters will be encoded, so no need to worry about if the characters are valid or not.
 
 ## Deploy the HTML File
-The HTML file should be deployed to a domain where it can be accessed. I deployed it to a GitHub domain. Feel free to use it:
+The HTML file should be deployed to a domain where it can be accessed via HTTPS protocal. I deployed it to a GitHub domain. Feel free to use it:
 
 ```html
 http://atjason.com/MacGoogleAnalytics/gapp.html
@@ -72,9 +69,7 @@ There's only 2 files needed for your macOS project: `GoogleAnalytics.swift` and 
 ## GoogleAnalytics.swift
 Good news, you won't even need to touch this file.
 
-This is the key-values file to integrate with Google Analytics. If you read the code, you will find that it loads the HTML file in a temporary WebView, and combines the data as parameters for the html.
-
-This is the key-values file to integrate with Google Analytics. It will load the server-side HTML file into a temporary WebView and combine the data (event calls) sent from your macOS app with the parameters needed for Google Analytics' API.
+This is the key-values file to integrate with Google Analytics. It will load the server-side HTML file into a temporary WebView and combine the data (event calls) sent from your macOS app with the parameters needed for Google Analytics API.
 
 ## GoogleAnalyticsHelper.swift
 This is essentially your setup class for Google Analytics.
@@ -88,7 +83,7 @@ You'll only need to update these properties:
 - `PingURL`
   - The full URL of gapp.html, eg. `http://atjason.com/MacGoogleAnalytics/gapp.html` (or the URL of your own self-deployment)
 - `PingTimeInterval`
-  - By default, it's 6 hours. It tells Google Analytics, "Hey, I'm alive!" every 6h. This will help Google Analytics to calculate the active users.
+  - By default, it's 6 hours. It tells Google Analytics, "Hey, I'm still alive!" every 6h. This will help Google Analytics to calculate the active users on your app.
 
 # How to Integrate MacGoogleAnalytics
 Use the MacGoogleAnalytics Demo project for reference.
