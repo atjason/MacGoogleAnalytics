@@ -61,7 +61,7 @@ http://atjason.com/MacGoogleAnalytics/gapp.html
 
 Again, the file can be deployed to your own server with your own domain name.
 
-**Tip**: you may want to reduce the HTML file size by compressing the JavaScript code it contains. Thus, your macOS app will be able to call it faster (albeit, by milliseconds).
+**Tip**: You may want to reduce the HTML file size by compressing the JavaScript code it contains. Thus, your macOS app will be able to call it faster (albeit, by milliseconds).
 
 # macOS Project
 There's only 2 files needed for your macOS project: `GoogleAnalytics.swift` and `GoogleAnalyticsHelper.swift`.
@@ -86,7 +86,7 @@ You'll only need to update these properties:
   - By default, it's 6 hours. It tells Google Analytics, "Hey, I'm still alive!" every 6h. This will help Google Analytics to calculate the active users on your app.
 
 # How to Integrate MacGoogleAnalytics
-Use the MacGoogleAnalytics Demo project for reference.
+Use the MacGoogleAnalyticsSwiftDemo project for reference.
 
 ### Step 1
 Import `GoogleAnalytics.swift` and `GoogleAnalyticsHelper.swift` (be sure to have "copy items" selected)
@@ -141,6 +141,7 @@ Please keep in mind that this solution should be a last resort. More info on [Ap
 After data is collected from your macOS app, you can view them in Google Analytics as normal: [https://analytics.google.com/analytics/web/](https://analytics.google.com/analytics/web/). During the debugging process, you can also check whether it works or not in the **Real-Time** section of GA.
 
 **Detecting macOS Versions**
+
 In the Swift Demo app, it collects the event data of `options > option_a > yes or no`. Let's say that you want to know how many users that triggered this event are running macOS 10.14 and how many are running 10.15. How would you go about doing this?
 
 Trick question, it's done for you – you just need to filter it.
@@ -171,5 +172,3 @@ MacGoogleAnalytics is licensed under the terms of the MIT license. Feel free to 
 
 # Donate
 If you think that MacGoogleAnalytics was helpful, you are welcome to [donate](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=quietjason%40gmail%2ecom&lc=US&item_name=Mac%20Google%20Analytics&button_subtype=services&currency_code=USD&bn=PP%2dBuyNowBF%3abtn_buynow_SM%2egif%3aNonHosted).
-
-Please note that this donation link is to the original author of MacGoogleAnalytics.
