@@ -10,20 +10,20 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-  
-  var mainWindowController: MainWindowController?
-  
-  func applicationDidFinishLaunching(aNotification: NSNotification) {
-    let mainWindowController = MainWindowController()
-    mainWindowController.showWindow(self)
     
-    self.mainWindowController = mainWindowController
+    var mainWindowController: MainWindowController?
     
-    GAHelper.startGoogleAnalytics()
-  }
-  
-  func applicationWillTerminate(notification: NSNotification) {
-    GAHelper.stopGoogleAnalytics()
-  }
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let mainWindowController = MainWindowController()
+        mainWindowController.showWindow(self)
+        
+        self.mainWindowController = mainWindowController
+        
+        GAHelper.startGoogleAnalytics()
+    }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        GAHelper.stopGoogleAnalytics()
+    }
 }
 
