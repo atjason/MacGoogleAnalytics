@@ -92,7 +92,7 @@ Use the MacGoogleAnalytics Demo project for reference.
 Import `GoogleAnalytics.swift` and `GoogleAnalyticsHelper.swift` (be sure to have "copy items" selected)
 
 ### Step 2
-Have Google Analytics when the app is launched and stop when the app will terminate.
+Have Google Analytics start when the app is launched and stop when the app will terminate.
 
 **AppDelegate.swift**
 ```swift
