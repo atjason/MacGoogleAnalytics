@@ -17,10 +17,11 @@ class MainWindowController: NSWindowController {
     }
     
     @IBAction func sendEvent(sender: NSButton!) {
-        //let selected = (optionA.state == NSOnState)
         let selected = (optionA.state == NSControl.StateValue.on)
         let label = selected ? GA.yes : GA.no
         GA.sendEvent(category: "options", event: "option_a", label: label)
+        
+        print("Selected:", label)   // Test label for GA parameter
     }
 }
 
