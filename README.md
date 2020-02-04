@@ -153,11 +153,9 @@ Trick question, it's done for you – you just need to filter it.
 6. Add another Custom Segment for `macOS 10.15`, etc.
 7. Repeat for all the macOS versions that your app supports
 
-![1747211](http://p.appsites.io/2016-05-14-1747211.jpg)
+<img src="https://i.imgur.com/De1Kdkz.png" width="860" />
 
 Once you've applied these Custom Segments, you should be able to distinguish the data between macOS 10.14 and 10.15.
-
-![1750021](http://p.appsites.io/2016-05-14-1750021.jpg)
 
 # Releasing on the Mac App Store
 Yes, Google Analytics are allowed on the Mac App Store. Here are some apps that have already been released on the Mac App Store using MacGoogleAnalytics:
