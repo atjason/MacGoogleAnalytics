@@ -1,3 +1,7 @@
+**Note:**
+
+For Swift 5, Xcode 11.3 & Catalina Support and updated README, please check the 'swift5' branch. Thanks [revblaze](https://github.com/revblaze)'s conribution.
+
 Google Analytics for Mac OS X using Swift.
 
 
